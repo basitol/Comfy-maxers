@@ -1,0 +1,36 @@
+{
+  "name": "comfy-maxers",
+  "version": "1.0.0",
+  "description": "MERN shopping cart app",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "yarn --cwd frontend start",
+    "dev": "concurrently \"yarn server\" \"yarn client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basitol/Comfy-maxers.git"
+  },
+  "author": "Abdulbasit Quadri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/basitol/Comfy-maxers/issues"
+  },
+  "homepage": "https://github.com/basitol/Comfy-maxers#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "file-loader": "^6.2.0",
+    "mongoose": "^6.3.4",
+    "url-loader": "^4.1.1"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.1",
+    "nodemon": "^2.0.16"
+  }
+}
