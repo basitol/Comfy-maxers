@@ -1,5 +1,5 @@
 import { Header, Footer } from "./components";
-import { Homepage, ProductPage } from "./pages";
+import { Homepage, ProductPage, CartPage } from "./pages";
 import { Container } from "react-bootstrap";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
@@ -10,6 +10,10 @@ function App() {
         <Routes>
           <Route index path="/" element={<Homepage />}></Route>
           <Route path="/product/:id" element={<ProductPage />}></Route>
+          <Route path="/cart">
+            <Route path=":id" element={<CartPage />} />
+            <Route path="" element={<CartPage />} />
+          </Route>
         </Routes>
       </Container>
       <Footer />
