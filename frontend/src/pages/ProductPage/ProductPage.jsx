@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Row,
@@ -16,19 +16,23 @@ import { listProductsDetails } from "../../actions/productActions";
 import "./ProductPage.scss";
 
 const ProductPage = () => {
+  const [qty, setQty] = useState(1);
   const { id } = useParams();
-  console.log(id);
   const dispatch = useDispatch();
+  let navigate = useNavigate();
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, products } = productDetails;
-  console.log(productDetails);
 
   useEffect(() => {
     dispatch(listProductsDetails(id));
   }, [dispatch, id]);
 
-  // const product = products.find((p) => p._id === id);
+  const addToCartHandler = () => {
+    console.log("Clicked");
+    navigate(`/cart/${id}?qty=${qty}`);
+  };
+
   return (
     <>
       <div className="my-3">
@@ -91,8 +95,30 @@ const ProductPage = () => {
                   </Row>
                 </ListGroup.Item>
 
+                {products.countInStock > 0 && (
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>Qty:</Col>
+                      <Col>
+                        <Form.Control
+                          as="select"
+                          value="qty"
+                          onChange={(e) => setQty(e.target.value)}
+                        >
+                          {[...Array(products.countInStock).keys()].map((x) => (
+                            <option key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </option>
+                          ))}
+                        </Form.Control>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                )}
+
                 <ListGroup.Item>
                   <Button
+                    onClick={addToCartHandler}
                     className="btn-block w-100"
                     type="button"
                     disabled={products.countInStock < 1}
