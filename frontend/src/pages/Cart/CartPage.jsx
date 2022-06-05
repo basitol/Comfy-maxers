@@ -17,7 +17,7 @@ import {
   Col,
 } from "react-bootstrap";
 import { Message } from "../../components";
-import { addToCart } from "../../actions/cartActions";
+import { addToCart, removeFromCart } from "../../actions/cartActions";
 import { FaTrash } from "react-icons/fa";
 import "./cart.scss";
 
@@ -32,8 +32,9 @@ const CartPage = ({ location }) => {
   const productId = id;
   const qty = Number(searchParams.get("qty"));
 
-  const removeFromCartHandler = () => {
+  const removeFromCartHandler = (id) => {
     console.log("removed");
+    dispatch(removeFromCart(id));
   };
 
   const checkoutHandler = () => {
