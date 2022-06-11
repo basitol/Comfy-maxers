@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Message, Loader, FormContainer } from "../../components";
 import { login } from "../../actions/userAction";
 
+import "./login.scss";
+
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +15,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
+  const { loading, errorMsg, userInfo } = userLogin;
   console.log(userLogin);
 
   const redirect = window.location.search
@@ -36,8 +38,7 @@ const LoginPage = () => {
   return (
     <FormContainer>
       <h1>Sign In</h1>
-      <p>{error}</p>
-      {error ? <Message variant="danger">{error}</Message> : null}
+      {errorMsg ? <Message variant="danger">{errorMsg}</Message> : null}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="email">
@@ -60,7 +61,7 @@ const LoginPage = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" className="btn">
           Sign In
         </Button>
       </Form>
