@@ -19,7 +19,6 @@ const RegisterPage = () => {
 
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, errorMsg, userInfo } = userRegister;
-  console.log(userRegister);
 
   const redirect = window.location.search
     ? window.location.search.split("=")[1]
