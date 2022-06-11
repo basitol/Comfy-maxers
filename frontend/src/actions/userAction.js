@@ -36,11 +36,10 @@ export const login = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
-      error: error.response,
-      // error:
-      //   error.response && error.response.data.message
-      //     ? error.response.data.message
-      //     : error.response,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
     });
     console.log(error.response);
   }
