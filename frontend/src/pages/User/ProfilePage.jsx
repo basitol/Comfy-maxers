@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Message, Loader, FormContainer } from "../../components";
-import { getUserDetails } from "../../actions/userAction";
+import { Message, Loader } from "../../components";
+import { getUserDetails, updateUserProfile } from "../../actions/userAction";
 
 import "./login.scss";
 
@@ -22,6 +22,9 @@ const ProfilePage = () => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  const { success } = userUpdateProfile;
 
   useEffect(() => {
     if (!userInfo) {
@@ -42,14 +45,11 @@ const ProfilePage = () => {
     //Check if password and confirm password match
     if (password !== confirmPassword) {
       setMessage("Passwords do not match");
-      return;
     } else {
       setMessage(null);
 
-      //Dispatch Update Profile
-      // dispatch(
-      //     updateProfile(name, email, password)
-      // );
+      // Dispatch Update Profile
+      dispatch(updateUserProfile({ id: user._id, name, email, password }));
     }
   };
 
@@ -59,6 +59,9 @@ const ProfilePage = () => {
         <h2>User Profile</h2>
         {message ? <Message variant="danger">{message}</Message> : null}
         {errorMsg ? <Message variant="danger">{errorMsg}</Message> : null}
+        {success ? (
+          <Message variant="success">Successfully updated</Message>
+        ) : null}
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="name">
