@@ -4,6 +4,7 @@ import CartPage from "./Cart/CartPage";
 import LoginPage from "./User/LoginPage";
 import RegisterPage from "./User/RegisterPage";
 import ProfilePage from "./User/ProfilePage";
+import ShippingPage from "./Shipping/ShippingPage";
 
 export {
   Homepage,
@@ -12,4 +13,5 @@ export {
   LoginPage,
   RegisterPage,
   ProfilePage,
+  ShippingPage,
 };
