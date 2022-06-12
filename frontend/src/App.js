@@ -7,6 +7,7 @@ import {
   RegisterPage,
   ProfilePage,
   ShippingPage,
+  PaymentPage,
 } from "./pages";
 import { Container } from "react-bootstrap";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -20,6 +21,7 @@ function App() {
           <Route path="/product/:id" element={<ProductPage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/shipping" element={<ShippingPage />}></Route>
+          <Route path="/payment" element={<PaymentPage />}></Route>
           <Route path="/register" element={<RegisterPage />}></Route>
           <Route path="/profile" element={<ProfilePage />}></Route>
           <Route path="/cart">
