@@ -37,8 +37,7 @@ const CartPage = ({ location }) => {
   };
 
   const checkoutHandler = () => {
-    navigate("/login?redirect=shipping");
-    console.log("check out");
+    navigate("/login?redirect=/shipping");
   };
 
   useEffect(() => {
