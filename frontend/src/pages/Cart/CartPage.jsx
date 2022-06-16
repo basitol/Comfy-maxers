@@ -108,7 +108,8 @@ const CartPage = ({ location }) => {
           <ListGroup variant="flush">
             <ListGroup.Item>
               <h2>
-                SubTotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
+                SubTotal (
+                {Number(cartItems.reduce((acc, item) => acc + item.qty, 0))})
                 Items
               </h2>
               $
