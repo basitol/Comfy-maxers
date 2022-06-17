@@ -11,8 +11,6 @@ const Homepage = () => {
 
   const { loading, error, products } = productList;
 
-  console.log(products, loading);
-
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
