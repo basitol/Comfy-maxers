@@ -16,7 +16,6 @@ const LoginPage = () => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, errorMsg, userInfo } = userLogin;
-  console.log(userLogin);
 
   const redirect = window.location.search
     ? window.location.search.split("=")[1]
