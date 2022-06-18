@@ -8,6 +8,7 @@ import ShippingPage from "./Shipping/ShippingPage";
 import PaymentPage from "./Payment/PaymentPage";
 import PlaceOrder from "./PlaceOrder/PlaceOrder";
 import OrderPage from "./OrderPage/OrderPage";
+import UserListPage from "./User/UserListPage";
 
 export {
   Homepage,
@@ -20,4 +21,5 @@ export {
   PaymentPage,
   PlaceOrder,
   OrderPage,
+  UserListPage,
 };
