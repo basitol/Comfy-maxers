@@ -10,6 +10,7 @@ import {
   PaymentPage,
   PlaceOrder,
   OrderPage,
+  UserListPage,
 } from "./pages";
 
 import { Container } from "react-bootstrap";
@@ -29,6 +30,7 @@ function App() {
           <Route path="/placeorder" element={<PlaceOrder />}></Route>
           <Route path="/order/:id" element={<OrderPage />}></Route>
           <Route path="/register" element={<RegisterPage />}></Route>
+          <Route path="/admin/userlist" element={<UserListPage />}></Route>
           <Route path="/profile" element={<ProfilePage />}></Route>
           <Route path="/cart">
             <Route path=":id" element={<CartPage />} />
