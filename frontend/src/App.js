@@ -11,6 +11,7 @@ import {
   PlaceOrder,
   OrderPage,
   UserListPage,
+  UserEditPage,
 } from "./pages";
 
 import { Container } from "react-bootstrap";
@@ -31,6 +32,7 @@ function App() {
           <Route path="/order/:id" element={<OrderPage />}></Route>
           <Route path="/register" element={<RegisterPage />}></Route>
           <Route path="/admin/userlist" element={<UserListPage />}></Route>
+          <Route path="/admin/users/:id" element={<UserEditPage />}></Route>
           <Route path="/profile" element={<ProfilePage />}></Route>
           <Route path="/cart">
             <Route path=":id" element={<CartPage />} />
