@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,15 +8,24 @@ import { listUsers } from "../../actions/userAction";
 
 import "./login.scss";
 import { FaCheck, FaEdit, FaTimes, FaTrash } from "react-icons/fa";
+
 const UserListPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const userList = useSelector((state) => state.userList);
   const { loading, error, users } = userList;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   useEffect(() => {
-    dispatch(listUsers());
-  }, [dispatch]);
+    if (userInfo && userInfo.isAdmin) {
+      dispatch(listUsers());
+    } else {
+      navigate("/login");
+    }
+  }, [dispatch, userInfo, navigate]);
 
   const deleteHandler = (e) => {
     e.preventDefault();
