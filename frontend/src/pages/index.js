@@ -10,6 +10,9 @@ import PlaceOrder from "./PlaceOrder/PlaceOrder";
 import OrderPage from "./OrderPage/OrderPage";
 import UserListPage from "./User/UserListPage";
 import UserEditPage from "./User/UserEditPage";
+import ProductListPage from "./ProductPage/ProductListPage";
+import ProductEditPage from "./ProductPage/ProductEditPage";
+import OrderListPage from "./OrderPage/OrderListPage";
 
 export {
   Homepage,
@@ -24,4 +27,7 @@ export {
   OrderPage,
   UserListPage,
   UserEditPage,
+  ProductListPage,
+  ProductEditPage,
+  OrderListPage,
 };
