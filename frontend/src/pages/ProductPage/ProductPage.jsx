@@ -17,6 +17,7 @@ import "./ProductPage.scss";
 
 const ProductPage = () => {
   const [qty, setQty] = useState(1);
+
   const { id } = useParams();
   const dispatch = useDispatch();
   let navigate = useNavigate();

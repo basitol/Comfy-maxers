@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Message, Loader, FormContainer } from "../../components";
-import { getUserDetails } from "../../actions/userAction";
+import { getUserDetails, updateUser } from "../../actions/userAction";
+import { USER_UPDATE_RESET } from "../../constants/userConstants";
 
 import "./login.scss";
 
 const UserEditPage = () => {
   const { id } = useParams(); // get userId from url
-  console.log(id);
+  const navigate = useNavigate(); // navigate is a hook that we can use to navigate to other pages
 
   const [name, setName] = useState(""); // set name to empty string
   const [email, setEmail] = useState(""); // set email to empty string
@@ -17,11 +18,17 @@ const UserEditPage = () => {
 
   const dispatch = useDispatch();
 
-  const userDetails = useSelector((state) => state.userDetails); // userDetails is the state slice of userReducer
+  const userDetails = useSelector((state) => state.userDetails);
   const { loading, errorMsg, user } = userDetails;
 
-  console.log(user);
+  const userUpdate = useSelector((state) => state.userUpdate);
+  const { loading: loadingUpdate, errorMsg: errorUpdate, success } = userUpdate;
+
   useEffect(() => {
+    if (success) {
+      dispatch({ type: USER_UPDATE_RESET });
+      navigate("/admin/userlist");
+    }
     if (!user.name || user._id !== id) {
       // if user is not logged in or user is not the same as the userId in the url
       dispatch(getUserDetails(id));
@@ -30,10 +37,11 @@ const UserEditPage = () => {
       setEmail(user.email); // set the email to the user's email
       setIsAdmin(user.isAdmin); // set the isAdmin to the user's isAdmin
     }
-  }, [user, dispatch, id]); // run this effect only when userId changes
+  }, [user, dispatch, id, success, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
+    dispatch(updateUser({ _id: id, name, email, isAdmin }));
   };
 
   return (
@@ -42,6 +50,8 @@ const UserEditPage = () => {
 
       <FormContainer>
         <h1>Edit User</h1>
+        {loadingUpdate && <Loader />}
+        {errorUpdate && <Message>{errorUpdate}</Message>}
         {loading ? (
           <Loader />
         ) : errorMsg ? (
