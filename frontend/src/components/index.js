@@ -6,6 +6,8 @@ import Loader from "./Loader";
 import Message from "./Message";
 import FormContainer from "./FormContainer";
 import CheckoutSteps from "./Checkout/CheckoutSteps";
+import SearchBox from "./Search/SearchBox";
+import Paginate from "./Paginate";
 
 export {
   Header,
@@ -16,4 +18,6 @@ export {
   Message,
   FormContainer,
   CheckoutSteps,
+  SearchBox,
+  Paginate,
 };
