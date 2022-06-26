@@ -1,12 +1,24 @@
-import React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
+import {
+  Nav,
+  Navbar,
+  Container,
+  NavDropdown,
+  Form,
+  Button,
+} from "react-bootstrap";
 import { FiShoppingCart, FiUser } from "react-icons/fi";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../../actions/userAction";
+
 import "./Header.scss";
 
 const Header = () => {
+  const [keyword, setKeyword] = useState("");
+
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -15,6 +27,31 @@ const Header = () => {
   const logoutHandler = () => {
     dispatch(logout());
     window.location.reload();
+  };
+
+  const changeHandler = (e) => {
+    e.preventDefault();
+    setKeyword(e.target.value);
+
+    if (e.target.value.trim()) {
+      navigate(`/search/${keyword}`);
+    } else {
+      navigate(`/`);
+    }
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    if (keyword.length === 0) {
+      navigate(`/`);
+    }
+
+    if (keyword.trim()) {
+      navigate(`/search/${keyword}`);
+    } else {
+      navigate(`/`);
+    }
   };
 
   return (
@@ -26,6 +63,23 @@ const Header = () => {
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
+            <Form className="flex">
+              <Form.Control
+                type="text"
+                name="q"
+                onChange={(e) => changeHandler(e)}
+                placeholder="search products..."
+                className="mr-sm-2 ml-sm-5"
+              ></Form.Control>
+              <Button
+                type="submit"
+                variant="outline-success"
+                className="p-2"
+                onClick={submitHandler}
+              >
+                Search
+              </Button>
+            </Form>
             <Nav className="ms-auto">
               <LinkContainer to={"/cart"}>
                 <Nav.Link>
