@@ -8,6 +8,8 @@ import FormContainer from "./FormContainer";
 import CheckoutSteps from "./Checkout/CheckoutSteps";
 import SearchBox from "./Search/SearchBox";
 import Paginate from "./Paginate";
+import ProductCarousel from "./ProductCarousel";
+import Meta from "./Meta";
 
 export {
   Header,
@@ -20,4 +22,6 @@ export {
   CheckoutSteps,
   SearchBox,
   Paginate,
+  ProductCarousel,
+  Meta,
 };
