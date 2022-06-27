@@ -32,7 +32,7 @@ function App() {
             path="/search/:keyword/page/:pageNumber"
             element={<Homepage />}
           ></Route>
-          <Route path="/search/:keywords" element={<Homepage />}></Route>
+          <Route path="/search/:keyword" element={<Homepage />}></Route>
           <Route path="/product/:id" element={<ProductPage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/shipping" element={<ShippingPage />}></Route>
