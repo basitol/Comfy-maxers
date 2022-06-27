@@ -10,7 +10,7 @@ import {
   Card,
   Form,
 } from "react-bootstrap";
-import { Rating, Loader, Message } from "../../components";
+import { Rating, Loader, Message, Meta } from "../../components";
 import { IoIosArrowBack } from "react-icons/io";
 import {
   listProductsDetails,
@@ -80,6 +80,7 @@ const ProductPage = () => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
+          <Meta title={products.name} />
           <Row>
             <Col md={6}>
               <Image src={products.image} alt={products.name} fluid />

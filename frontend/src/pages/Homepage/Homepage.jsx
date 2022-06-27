@@ -1,8 +1,15 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "react-bootstrap";
-import { Product, Loader, Message, Paginate } from "../../components";
+import {
+  Product,
+  Loader,
+  Message,
+  Paginate,
+  ProductCarousel,
+  Meta,
+} from "../../components";
 import { listProducts } from "../../actions/productActions";
 
 const Homepage = () => {
@@ -19,6 +26,14 @@ const Homepage = () => {
 
   return (
     <>
+      <Meta />
+      {!keyword ? (
+        <ProductCarousel />
+      ) : (
+        <Link to="/" className="btn btn-light">
+          Go back
+        </Link>
+      )}
       <h1>Latest Products</h1>
       {loading ? (
         <Loader />
