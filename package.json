@@ -10,11 +10,11 @@
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",
-    "client": "yarn --cwd frontend start",
+    "client": "yarn start --prefix frontend",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
-    "heroku-postbuild": "YARN_CONFIG_PRODUCTION=false yarn install --prefix frontend && yarn run build --prefix frontend"
+    "heroku-postbuild": "YARN_CONFIG_PRODUCTION=false yarn --prefix frontend && yarn run build --prefix frontend"
   },
   "repository": {
     "type": "git",
