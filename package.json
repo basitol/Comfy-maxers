@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node backend/server",
-    "build": "react-scripts build",
+    "build": "cd frontend && react-scripts build",
     "server": "nodemon backend/server",
     "client": "yarn start --prefix frontend",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
