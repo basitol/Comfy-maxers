@@ -9,12 +9,13 @@
   },
   "scripts": {
     "start": "node backend/server",
+    "build": "react-scripts build",
     "server": "nodemon backend/server",
-    "client": "yarn --cwd frontend start",
+    "client": "yarn start --prefix frontend",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+    "heroku-postbuild": "YARN_PRODUCTION=false cd frontend && yarn --only=dev && yarn && yarn run build"
   },
   "repository": {
     "type": "git",

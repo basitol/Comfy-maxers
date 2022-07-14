@@ -148,9 +148,57 @@ const updateProduct = asyncHandler(async (req, res) => {
 // route  GET /api/product/top
 // access Public
 const getTopProduct = asyncHandler(async (req, res) => {
-  const products = await Product.find({}).sort({ rating: -1 }).limit(3);
+  const products = await Product.find({}).sort({ rating: -1 }).limit(6);
 
   res.json(products);
+});
+
+// desc   Get newest products
+// route  GET /api/product/new
+// access Public
+const getNewProduct = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ createdAt: -1 }).limit(6);
+
+  res.json(products);
+});
+
+// desc   Get products by category
+// route  GET /api/product/category
+// access Public
+const getProductByCategory = asyncHandler(async (req, res) => {
+  const products = await Product.find({ category: req.params.category });
+
+  res.json(products);
+});
+
+// desc   Get products by brand
+// route  GET /api/product/brand
+// access Public
+const getProductByBrand = asyncHandler(async (req, res) => {
+  const products = await Product.find({ brand: req.params.brand });
+
+  res.json(products);
+});
+
+// desc   Get best selling products
+// route  GET /api/product/best
+// access Public
+const getBestSellingProduct = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ countInStock: -1 }).limit(3);
+
+  res.json(products);
+});
+
+// desc   Get products by keyword
+// route  GET /api/product/keyword
+// access Public
+const getProductByKeyword = asyncHandler(async (req, res) => {
+  const products = await Product.find({
+    name: {
+      $regex: req.params.keyword,
+      $options: "i",
+    },
+  });
 });
 
 export {
@@ -161,4 +209,5 @@ export {
   updateProduct,
   createProductReview,
   getTopProduct,
+  getNewProduct,
 };
