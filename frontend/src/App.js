@@ -14,7 +14,9 @@ import {
   UserEditPage,
   ProductListPage,
   ProductEditPage,
+  Product,
   OrderListPage,
+  LandingPage,
 } from "./pages";
 
 import { Container } from "react-bootstrap";
@@ -24,9 +26,14 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Container>
+      <div className="w-full">
         <Routes>
           <Route index path="/" element={<Homepage />}></Route>
+          <Route path="/landing" element={<LandingPage />}></Route>
+        </Routes>
+      </div>
+      <Container>
+        <Routes>
           <Route path="/page/:pageNumber" element={<Homepage />}></Route>
           <Route
             path="/search/:keyword/page/:pageNumber"
@@ -34,6 +41,7 @@ function App() {
           ></Route>
           <Route path="/search/:keyword" element={<Homepage />}></Route>
           <Route path="/product/:id" element={<ProductPage />}></Route>
+          <Route path="/product" element={<Product />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/shipping" element={<ShippingPage />}></Route>
           <Route path="/payment" element={<PaymentPage />}></Route>

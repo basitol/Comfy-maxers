@@ -13,6 +13,8 @@ import UserEditPage from "./User/UserEditPage";
 import ProductListPage from "./ProductPage/ProductListPage";
 import ProductEditPage from "./ProductPage/ProductEditPage";
 import OrderListPage from "./OrderPage/OrderListPage";
+import LandingPage from "./LandingPage/LandingPage";
+import Product from "./ProductPage/Product";
 
 export {
   Homepage,
@@ -30,4 +32,6 @@ export {
   ProductListPage,
   ProductEditPage,
   OrderListPage,
+  LandingPage,
+  Product,
 };

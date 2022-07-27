@@ -9,6 +9,7 @@ import CheckoutSteps from "./Checkout/CheckoutSteps";
 import SearchBox from "./Search/SearchBox";
 import Paginate from "./Paginate";
 import ProductCarousel from "./ProductCarousel";
+import ProductCard from "./Product/ProductCard";
 import Meta from "./Meta";
 
 export {
@@ -23,5 +24,6 @@ export {
   SearchBox,
   Paginate,
   ProductCarousel,
+  ProductCard,
   Meta,
 };
