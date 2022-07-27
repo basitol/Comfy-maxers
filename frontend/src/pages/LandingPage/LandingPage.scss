@@ -1,0 +1,35 @@
+// .search {
+//   width: 500px;
+// }
+
+// input {
+//   border: 1px solid #d1d1d1;
+//   outline: none;
+// }
+
+// .link {
+//   text-transform: capitalize;
+//   padding: 0 10px;
+//   margin: 0 5px;
+//   text-decoration: none;
+//   color: #383838;
+//   opacity: 0.7;
+//   transition: 0.5s;
+// }
+
+// .link:hover {
+//   opacity: 1;
+//   color: #383838;
+// }
+
+// .hero-section {
+//   background-image: url("/images/header.png");
+// }
+
+.product-container::-webkit-scrollbar {
+  display: none;
+}
+
+.product-card:hover .card-btn {
+  opacity: 1;
+}
