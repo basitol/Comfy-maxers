@@ -11,7 +11,7 @@
     "start": "node backend/server",
     "build": "react-scripts build",
     "server": "nodemon backend/server",
-    "client": "yarn start --prefix frontend",
+    "client": "yarn --cwd frontend start",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
