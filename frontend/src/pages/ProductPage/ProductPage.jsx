@@ -33,8 +33,6 @@ const ProductPage = () => {
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, products } = productDetails;
 
-  console.log(products);
-
   const productReviewCreate = useSelector((state) => state.productReviewCreate);
   const { success: successReview, error: errorReview } = productReviewCreate;
 

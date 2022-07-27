@@ -1,20 +1,13 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Message, Loader } from "./";
+import { Message, Loader } from "../";
 
-const ProductCarousel = ({
-  name,
-  _id,
-  description,
-  price,
-  image,
-  discount,
-}) => {
+const ProductCard = ({ name, _id, description, price, image, discount }) => {
   return (
     <>
       <div
-        className="product-card mr-10 p-2.5 bg-slate-100 rounded-xl shadow-md z-50"
-        style={{ flex: "0 0 auto", width: "270px", height: "470px" }}
+        className="product-card w-full sm:w-1/2 p-2.5 bg-slate-100 rounded-xl shadow-md z-50"
+        style={{ flex: "0 0 auto", height: "470px" }}
       >
         <div
           className="product-image relative w-full overflow-hidden"
@@ -60,4 +53,4 @@ const ProductCarousel = ({
   );
 };
 
-export default ProductCarousel;
+export default ProductCard;

@@ -14,6 +14,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../../actions/userAction";
 
 import "./Header.scss";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [keyword, setKeyword] = useState("");
@@ -55,74 +56,62 @@ const Header = () => {
   };
 
   return (
-    <div>
-      <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
-        <Container>
-          <LinkContainer to={"/"}>
-            <Navbar.Brand>Comfy Maxers</Navbar.Brand>
-          </LinkContainer>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Form className="flex">
-              <Form.Control
-                type="text"
-                name="q"
-                onChange={(e) => changeHandler(e)}
-                placeholder="search products..."
-                className="mr-sm-2 ml-sm-5"
-              ></Form.Control>
-              <Button
-                type="submit"
-                variant="outline-success"
-                className="p-2"
-                onClick={submitHandler}
-              >
-                Search
-              </Button>
-            </Form>
-            <Nav className="ms-auto">
-              <LinkContainer to={"/cart"}>
-                <Nav.Link>
-                  <FiShoppingCart /> Cart
-                </Nav.Link>
-              </LinkContainer>
-              {userInfo ? (
-                <NavDropdown title={userInfo.name.split(" ")[0]} id="username">
-                  <LinkContainer to={"/profile"}>
-                    <NavDropdown.Item>
-                      <FiUser /> Profile
-                    </NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to={"/logout"}>
-                    <NavDropdown.Item onClick={logoutHandler}>
-                      Logout
-                    </NavDropdown.Item>
-                  </LinkContainer>
-                </NavDropdown>
-              ) : (
-                <LinkContainer to={"/login"}>
-                  <Nav.Link>
-                    <FiUser /> Sign In
-                  </Nav.Link>
-                </LinkContainer>
-              )}
-              {userInfo && userInfo.isAdmin && (
-                <NavDropdown title="Admin" id="adminmenu">
-                  <LinkContainer to={"/admin/userlist"}>
-                    <NavDropdown.Item>Users</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to={"/admin/productlist"}>
-                    <NavDropdown.Item>Products</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to={"/admin/orderlist"}>
-                    <NavDropdown.Item>Orders</NavDropdown.Item>
-                  </LinkContainer>
-                </NavDropdown>
-              )}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+    <div className="bg-slate-100 w-full">
+      <div
+        className="flex justify-between items-center"
+        style={{ padding: "10px 5vw" }}
+      >
+        <img src="/images/dark-logo.png" alt="logo" className="h-14" />
+        <div className="items flex align-center">
+          <div className="search flex">
+            <input
+              type="text"
+              placeholder="Search for products"
+              className="w-4/5 h-8 p-2.5 rounded-l-xl text-neutral-400 capitalize placeholder:text-neutral-400"
+              onChange={(e) => changeHandler(e)}
+            />
+            <button
+              className="w-1/5 h-8 px-5 py-auto border-none text-base capitalize bg-gray-800 rounded-r-xl"
+              onClick={submitHandler}
+            >
+              Search
+            </button>
+          </div>
+          <div className="cart flex">
+            <Link to="/login">
+              <FiUser className="w-8 h-6 text-neutral-700" />
+            </Link>
+            <Link to="/cart">
+              <FiShoppingCart className="w-8 h-6 text-neutral-700" />
+            </Link>
+          </div>
+        </div>
+      </div>
+      <ul
+        className="flex w-full justify-center list-none"
+        style={{ padding: "10px 10vw", borderTop: "1px solid #d1d1d1" }}
+      >
+        <li>
+          <Link to="/" className="link">
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/" className="link">
+            Shirts
+          </Link>
+        </li>
+        <li>
+          <Link to="/" className="link">
+            Trousers
+          </Link>
+        </li>
+        <li>
+          <Link to="/" className="link">
+            Shoes
+          </Link>
+        </li>
+      </ul>
     </div>
   );
 };
